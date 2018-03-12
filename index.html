@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/gifpick.css" />
+  <title>GIF Picker!</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-md-12 text-center">
+          <h1>GIF Picker</h1>
+        <ul style="list-style: none; font-size:1rem">
+          <li>Welcome to GIF Picker!</li>
+          <li>Grab GIFs at the click of a button!</li>
+          <li>Enter a new theme and click the button to add to the colleciton.</li>
+          <li>Click on any image to remove it. Click on a theme heading to remove all the images for that theme.</li>
+          <li>Each time you click a theme button, new GIFs will be added to that category.</li>
+        </ul>
+      </div>
+      <a href="https://media0.giphy.com/media/Ov5NiLVXT8JEc/200_d.gif?cid=e1bb72ff5aa5d4fd6854534c32f1b238" download="test">Download Test</a>
+    </div>
+
+
+
+
+    <form id="input-form">
+        <div class="form-group" id="theme-input">
+          <label for="input-text" style="font-weight:bold; font-size:1.5rem">Choose a new theme</label>
+          <input id="input-text" type="text" class="col-md-4" >
+        </div>
+        <button id="theme-submit" type="submit" class="btn-lg btn-theme-submit">Click to add a theme</button>
+      </form>
+      
+
+
+  <!-- <form id="getTheme">
+  <label for="theme-input" style="font-weight:bold">Enter a new theme</label>
+  <input type="text" class="button" id="theme-input">
+   -->
+  <!-- Button triggers new movie to be added -->
+
+
+
+  
+ 
+  
+  <div id="currentTheme" class="col-md-12 text-center" style="font-weight:bold; font-size:2rem; margin-top:10px"></div>
+
+  <!-- <div class="row">
+    <div class="col-md-12 text-center">
+        <button id="get-some" class="btn-lg btn-get-some">GET SOME!</button>
+    </div> -->
+
+    <div class="row">
+      <div class="col-md-12" id="themeDiv">
+        <h3>Get GIFs:</h1>
+      </div>
+    </div>
+  <!-- </div> -->
+  
+  <div id="images" style="margin-top:30px"></div>
+
+</div><!-- end container div -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="./assets/js/gifpick.js"></script>
+  
+</body>
+
+</html>

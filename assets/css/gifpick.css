@@ -1,0 +1,10 @@
+body {
+        background-image:url("../media/jif.png");
+        background-repeat: no-repeat;
+        background-size: 100vw 100vh;
+        background-attachment: fixed;}
+
+        
+#currentTheme {
+        margin-bottom:2rem;
+}
