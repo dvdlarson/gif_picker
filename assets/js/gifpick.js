@@ -22,7 +22,7 @@ $("#input-form").on("submit", function (event) {
       }
     console.log("inputTExt received: "+inputText);
     $("#currentTheme").html("Current Theme: " + inputText);
-    
+    $("#input-text").text("");
  //   currentTheme=$(this).data("value");
     currentTheme = inputText.toLowerCase();
     newThemeSearch = currentTheme.replace(" ","+");
@@ -126,8 +126,8 @@ $("#input-form").on("submit", function (event) {
                     newImage.attr("data-still", staticUrl);
                     newImage.attr("data-animate", imageUrl);
                     newImage.attr("class", "gifpic");
-                    newImage.attr("href","data:image/gif")
-                    newImage.attr("download",quickTag)
+                    newImage.attr("href","data:image/gif");
+                    newImage.attr("download",quickTag+".gif");
                     newImage.attr("data-state","animate");
            //         newImage.attr("ondblclk", "removeMe(this)");
             //     newImage.attr("ondblclk", "downloadMe(imageUrl)");
@@ -250,6 +250,7 @@ function addNewTheme(){
          $("#"+divID+"").remove();
          var buttonID = divID+"button";
          $("#"+buttonID+"").remove();
+         $("#themeDiv").html("");
     //    $("#"+divID+"").remove();//removes the theme div
         var themeIndex = themeArray.indexOf(divID);
         var postedIndex = postedThemes.indexOf(divID);

@@ -12,7 +12,16 @@ body {
 .gif-holder  {
         float:left;
 }
-.theme-div {
+.theme-div{
+        position:relative;
+        float:left;
+}
+ #currentTheme{
+        position:relative;
+        float:left;
+}
+
+#themeDiv {
         position:relative;
         float:left;
 }

@@ -21,7 +21,8 @@
           <li>Click on any image to pause it.</li>
           <li>*Double-click* any image to remove it.</li>
           <li>Click any theme heading to completely remove that theme.</li>
-          <li>Each time you click a theme button, new GIFs will be added to that category.</li>
+          <li>Each time you click a theme button, five random new GIFs will be added to that category.</li>
+          <li>Click the link above any GIF to download it. (Chrome & IE only)</li>
         </ul>
       </div>
       
@@ -30,11 +31,12 @@
 
 
     <form id="input-form">
-        <div class="form-group" id="theme-input">
+        <div class="form-group col-md-12" id="theme-input">
           <label for="input-text" style="font-weight:bold; font-size:1.5rem">Choose a new theme</label>
           <input id="input-text" type="text" class="col-md-4" >
-        </div>
+        
         <button id="theme-submit" type="submit" class="btn-lg btn-theme-submit">Click to add a theme</button>
+      </div>
       </form>
       
 
@@ -49,7 +51,7 @@
 
   
  
-  <div class="row">
+  <div class="row col-md-12">
   <div id="currentTheme" class="col-md-12 text-center" style="font-weight:bold; font-size:2rem; margin-top:10px"></div>
   </div>  
   <!-- <div class="row">
@@ -57,14 +59,15 @@
         <button id="get-some" class="btn-lg btn-get-some">GET SOME!</button>
     </div> -->
 
-    <div class="row">
+    <div class="row col-md-12">
       <div class="col-md-12" id="themeDiv">
         <h3>Get GIFs:</h1>
       </div>
     </div>
   <!-- </div> -->
-  
+  <div class="row">
   <div id="images" style="margin-top:30px"></div>
+  </div>
 
 </div><!-- end container div -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
