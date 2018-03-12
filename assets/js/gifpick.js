@@ -4,7 +4,7 @@ var currentTheme = "cats";
 var themeArray = ["cats","random"];
 var postedThemes = [];
 
-$(document).on("load",populateButtons());
+$(document).on("load",populateButtons(themeArray));
 $("#currentTheme").html("Current Theme: " + currentTheme);
 
 
@@ -110,13 +110,14 @@ $("#input-form").on("submit", function (event) {
                     //create new image div
                 var imageUrl = response.data[i].images["fixed_width_downsampled"].url;
                 var staticUrl = response.data[i].images["fixed_width_still"].url;
-              //  var imageHolder = $("<div>");
+                var quickTag=response.data[i].slug;
+                var imageHolder = $("<div>").attr("class","gif-holder");
              //   var altTitle = currentTheme+"Image"+i;
 
              //      imageHolder.attr("id",altTitle);
 
-             //    var imgLink = $("<span>").html("<a href="+imageUrl+" download>Download Me</a>");
-           //         imageHolder.append(imgLink);
+             var imgLink = $("<div>").html("<a href="+imageUrl+" download='"+quickTag+"'>Download Me</a>");
+                   imageHolder.append(imgLink);
                     
                     var newImage = $("<img>");
                     console.log("just created the new image element");
@@ -125,26 +126,34 @@ $("#input-form").on("submit", function (event) {
                     newImage.attr("data-still", staticUrl);
                     newImage.attr("data-animate", imageUrl);
                     newImage.attr("class", "gifpic");
+                    newImage.attr("href","data:image/gif")
+                    newImage.attr("download",quickTag)
                     newImage.attr("data-state","animate");
            //         newImage.attr("ondblclk", "removeMe(this)");
             //     newImage.attr("ondblclk", "downloadMe(imageUrl)");
             //     newImage.attr("alt", altTitle);
                     newImage.attr("style","height:175px, width:auto");
-            //        imageHolder.append(newImage);
+                    imageHolder.append(newImage);
                     // $("#"+altTitle+"").html("<a class='download-link' href="+imageUrl+" download="+altTitle+">Download</a>")
             //       $("#"+imageHolder+"").append(newImage);
 
                     //prepend the new image into the images div
                     var divID = currentTheme;
                     console.log("divID:" + divID);
-                    $("#"+divID+"").append(newImage);
+                    $("#"+divID+"").append(imageHolder);
 
             };//end for loop
       }) //end THEN  function
     
     } //end getImages
+
+  
+    $(document).on("dblclick",".gifpic",function() {
+        $(this).parent().remove();
+       
+    })
     $(document).on("click",".gifpic",function() {
-        
+       
         if ($(this).attr("data-state")=="animate") {
             $(this).attr("src",$(this).data("still"));
             $(this).attr("data-state","still");
@@ -156,10 +165,7 @@ $("#input-form").on("submit", function (event) {
 
     })
 
-    $(".gifpic").dblclick(function() {
-        console.log("youre trying to delete: "+ this )
-        removeMe(this); 
-      });
+    
 
     // $(".gifpic").on("dblclk",function(event) {
     //     removeMe(this);
@@ -208,7 +214,7 @@ $("#input-form").on("submit", function (event) {
     
 function addNewTheme(){
             var newThemeDiv=$("<div>");
-            newThemeDiv.html("<h3 class='theme-header'>Theme: "+ currentTheme + "</h3>");
+            newThemeDiv.html("<h3 class='theme-header' data-value='"+currentTheme+"'>Theme: "+ currentTheme + "</h3>");
             var newID=currentTheme;
             console.log("newID",newID);
             newThemeDiv.attr("id",""+newID+"");
@@ -221,10 +227,11 @@ function addNewTheme(){
            
 };
 
-    function populateButtons() 
+    function populateButtons(targetArray) 
     {
-        for (var i = 0;i<themeArray.length;i++) {
-            var label = themeArray[i];
+        
+        for (var i = 0;i<targetArray.length;i++) {
+            var label =targetArray[i];
             var newButton = $("<button>");
             newButton.text(label);
             newButton.attr("id",label+"button");
@@ -237,17 +244,20 @@ function addNewTheme(){
     }
 //function to remove entire theme div if you click on the heading
 
-    $(document.body).on("click", ".theme-header", function() {
-        var divID = $(this).attr("id")
-        var buttonID = divID+"button";
+    $(document).on("click", ".theme-header", function() {
        
-       $("#"+divID+"").remove();//removes the theme div
+         var divID = $(this).data("value");
+         $("#"+divID+"").remove();
+         var buttonID = divID+"button";
+         $("#"+buttonID+"").remove();
+    //    $("#"+divID+"").remove();//removes the theme div
         var themeIndex = themeArray.indexOf(divID);
         var postedIndex = postedThemes.indexOf(divID);
     //delete theme from themeArray and list of posted themes
         themeArray.splice(themeIndex,1);
         postedThemes.splice(postedIndex,1);
-        $("#"+buttonID+"").remove(); //removes associated button
+        populateButtons(postedThemes);
+    //     $("#"+buttonID+"").remove(); //removes associated button
          
-       console.log(postedThemes);
+    //    console.log(postedThemes);
       });

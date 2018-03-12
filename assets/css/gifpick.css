@@ -8,3 +8,11 @@ body {
 #currentTheme {
         margin-bottom:2rem;
 }
+
+.gif-holder  {
+        float:left;
+}
+.theme-div {
+        position:relative;
+        float:left;
+}
