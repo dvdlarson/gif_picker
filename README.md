@@ -1,5 +1,5 @@
 # gif_picker
-bootcamp class activity / rabbit hole based on the magic cat button
+week six U of A bootcamp homework - jquery & APIs
 
 https://dvdlarson.github.io/gif_picker/
 
